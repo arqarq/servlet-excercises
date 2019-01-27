@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 public class LoginValidatorTest {
-    private static final String USERNAME = "Javaktw9";
+    private static final String USERNAME = "JavaKtw9";
     private static final String PASSWORD = "Sda2019";
     private LoginValidator loginValidatorSUT;
 
@@ -59,7 +59,7 @@ public class LoginValidatorTest {
     @Test
     public void isValidCaseSensitive() {
         // Given
-        String userName = "JavaKtw9";
+        String userName = "Javaktw9";
         // When
 //        boolean valid = "sda".equals(userName); // unikamy nullpointera
         boolean valid = loginValidatorSUT.isValid(userName, PASSWORD);
