@@ -12,7 +12,11 @@ import java.io.IOException;
 public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession httpSession = request.getSession();
+        HttpSession httpSession = request.getSession(false);
+        if (httpSession == null) {
+            response.sendRedirect("login.html");
+            return;
+        }
         String user = (String) httpSession.getAttribute("user");
         response.getWriter().println("<html>" +
                 "<body>" +
