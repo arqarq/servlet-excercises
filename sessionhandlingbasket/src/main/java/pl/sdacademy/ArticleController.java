@@ -29,7 +29,7 @@ public class ArticleController extends HttpServlet {
                 "    <label for=\"articleId\">Article:</label>\n" +
                 "    <select id=\"articleId\" name=\"articleId\">\n" +
                 availableProducts.stream()
-                        .map(product -> "<option id=\"" + product.getId() + "\">" + product.getName() + "</option>")
+                        .map(product -> "<option value=\"" + product.getId() + "\">" + product.getName() + "</option>")
                         .collect(Collectors.joining()) +
                 "    </select>\n" +
                 "    <br>\n" +
@@ -37,9 +37,9 @@ public class ArticleController extends HttpServlet {
                 "    <input id=\"quantity\" max=\"10\" min=\"1\" name=\"quantity\" type=\"number\">\n" +
                 "    <br>\n" +
                 "    <input type=\"submit\" value=\"Add\">\n" +
-                "    <br>\n" +
-                "    <a href=\"basket\">Go to koszyk</a>\n" +
-                "</form>\n" +
+                "    </form>\n" +
+                "<br>\n" +
+                "<a href=\"basket\">Go to koszyk</a>\n" +
                 "</body>\n" +
                 "</html>");
     }
