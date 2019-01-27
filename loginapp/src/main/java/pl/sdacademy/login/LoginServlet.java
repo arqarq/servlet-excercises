@@ -1,4 +1,4 @@
-package pl.sdacademy;
+package pl.sdacademy.login;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +20,12 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("validationMessages", Arrays.asList(
                     "Invalid user name or password",
                     "Password cannot be empty"));
-            request.getRequestDispatcher("/loginError").forward(request, response);
+            request.getRequestDispatcher("/loginError").forward(request, response); // przetwarzanie wewnątrz serwera
             return;
         }
-        response.getWriter().println("Valid user");
+//        response.getWriter().println("Valid user");
+        response.sendRedirect("main");
+//        request.setAttribute("ifSuccess", user);
+//        request.getRequestDispatcher("/main").forward(request, response); // przetwarzanie wewnątrz serwera
     }
 }

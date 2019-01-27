@@ -2,6 +2,7 @@ package pl.sdacademy;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.sdacademy.login.LoginValidator;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;

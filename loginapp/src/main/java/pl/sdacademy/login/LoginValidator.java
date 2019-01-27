@@ -1,8 +1,8 @@
-package pl.sdacademy;
+package pl.sdacademy.login;
 
 import org.apache.commons.lang3.StringUtils;
 
-class LoginValidator {
+public class LoginValidator {
     /**
      * This method validates if username and password are correct
      * If {@code userName} or {@code password} is empty then return false.
@@ -17,7 +17,7 @@ class LoginValidator {
     private static final String USERNAME = "JavaKtw9";
     private static final String PASSWORD = "Sda2019";
 
-    boolean isValid(String userName, String password) {
+    public boolean isValid(String userName, String password) {
         if (StringUtils.isBlank(userName) || StringUtils.isBlank(password)) {
             return false;
         }
