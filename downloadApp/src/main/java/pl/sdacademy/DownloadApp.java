@@ -1,5 +1,6 @@
 package pl.sdacademy;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletContext;
@@ -26,7 +27,7 @@ public class DownloadApp extends HttpServlet {
                 "</head>\n" +
                 "<body>\n" +
                 "<p>File name to download:</p>\n" +
-                "<form method=\"post\" action=\"/download\">\n" +
+                "<form method=\"post\" action=\"download\">\n" +
                 "    <label>\n" +
                 "        <input name=\"what\" type=\"text\">\n" +
                 "    </label>\n" +
@@ -44,7 +45,7 @@ public class DownloadApp extends HttpServlet {
             response.getWriter().println("<html>" +
                     "<body>" +
                     "<p>Nothing given thus no results</p>" +
-                    "<a href=\"/download\">Back</a>" +
+                    "<a href=\"download\">Back</a>" +
                     "</body>" +
                     "</html>");
             return;
@@ -56,7 +57,7 @@ public class DownloadApp extends HttpServlet {
             response.getWriter().println("<html>" +
                     "<body>" +
                     "<p>File not available to download: " + what + "</p>" +
-                    "<a href=\"/download\">Back</a>" +
+                    "<a href=\"download\">Back</a>" +
                     "</body>" +
                     "</html>");
             return;
@@ -65,13 +66,16 @@ public class DownloadApp extends HttpServlet {
         response.setContentType("application/octet-stream");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + what + "\"");
 
-        ServletOutputStream responseOutputStream = response.getOutputStream();
+/*        ServletOutputStream responseOutputStream = response.getOutputStream();
         byte[] buffer = new byte[8 * 1024];
         int bytesRead;
         while ((bytesRead = inputStream.read(buffer)) != -1) {
             responseOutputStream.write(buffer, 0, bytesRead);
         }
         responseOutputStream.flush();
-        responseOutputStream.close();
+        responseOutputStream.close();*/
+        try (ServletOutputStream responseOutputStream = response.getOutputStream()) {
+            IOUtils.copy(inputStream, responseOutputStream);
+        }
     }
 }
