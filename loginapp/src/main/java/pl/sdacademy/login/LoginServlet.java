@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -24,6 +25,8 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 //        response.getWriter().println("Valid user");
+        HttpSession session = request.getSession();
+        session.setAttribute("user", user);
         response.sendRedirect("main");
 //        request.setAttribute("ifSuccess", user);
 //        request.getRequestDispatcher("/main").forward(request, response); // przetwarzanie wewnątrz serwera
