@@ -2,7 +2,7 @@ package pl.sdacademy;
 
 import org.apache.commons.lang3.StringUtils;
 
-public class LoginValidator {
+class LoginValidator {
     /**
      * This method validates if username and password are correct
      * If {@code userName} or {@code password} is empty then return false.
