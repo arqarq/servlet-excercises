@@ -25,7 +25,7 @@ public class ArticleController extends HttpServlet {
                 "    <title>Shop</title>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                "<form>\n" +
+                "<form method=\"post\">\n" +
                 "    <label for=\"articleId\">Article:</label>\n" +
                 "    <select id=\"articleId\" name=\"articleId\">\n" +
                 availableProducts.stream()
@@ -42,5 +42,17 @@ public class ArticleController extends HttpServlet {
                 "<a href=\"basket\">Go to koszyk</a>\n" +
                 "</body>\n" +
                 "</html>");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        long quantity = Long.parseLong(request.getParameter("quantity"));
+        long articleId = Long.parseLong(request.getParameter("articleId"));
+        String productName = new ArticleServices().getAvailableArticles().stream()
+                .filter(article -> article.getId() == articleId)
+                .findFirst()
+                .orElseGet(() -> ArticleServices.noArticle)
+                .getName();
+        System.out.println(productName + " x " + quantity);
     }
 }

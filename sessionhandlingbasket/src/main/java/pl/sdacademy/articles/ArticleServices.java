@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class ArticleServices {
+    public static Article noArticle = new Article(0L, "no product");
     private Collection<Article> availableArticles = Arrays.asList(
             new Article(1L, "Piwo"),
             new Article(2L, "Piwo2"),
