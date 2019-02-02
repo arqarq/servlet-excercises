@@ -86,6 +86,7 @@ public class ArticleController extends HttpServlet {
         response.getWriter().println("<html><body>" +
                 "<p>Article " + productName + " added to the basket</p>" +
                 "<a href=\"/shop\">Add another...</a>" +
+                "<br>" +
                 "<a href=\"/basket\">Show basket...</a>" +
                 "</body></html>");
 
