@@ -1,4 +1,4 @@
-package pl.sdacademy;
+package pl.sdacademy.registration;
 
 public class Address {
     private String city;
