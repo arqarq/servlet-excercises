@@ -15,11 +15,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "ArticleController", value = "/")
+@WebServlet(name = "ArticleController", value = "/shop")
 public class ArticleController extends HttpServlet {
+    private Collection<Article> availableProducts = new ArticleServices().getAvailableArticles();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Collection<Article> availableProducts = new ArticleServices().getAvailableArticles();
 
         response.getWriter().println("<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -37,7 +38,7 @@ public class ArticleController extends HttpServlet {
                 "    </select>\n" +
                 "    <br>\n" +
                 "    <label for=\"quantity\">Quantity:</label>\n" +
-                "    <input id=\"quantity\" max=\"10\" min=\"1\" name=\"quantity\" type=\"number\">\n" +
+                "    <input id=\"quantity\" max=\"10\" min=\"1\" name=\"quantity\" type=\"number\" value=\"1\">\n" +
                 "    <br>\n" +
                 "    <input type=\"submit\" value=\"Add\">\n" +
                 "    </form>\n" +
@@ -49,8 +50,8 @@ public class ArticleController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        long articleId = Long.parseLong(request.getParameter("quantity"));
-        BigDecimal quantity = new BigDecimal(request.getParameter("articleId"));
+        Long articleId = Long.parseLong(request.getParameter("articleId"));
+        BigDecimal quantity = new BigDecimal(request.getParameter("quantity"));
 
 //        if (articles == null) { // double lock
 //            synchronized (HelloWorldServlet.class) {
@@ -61,8 +62,8 @@ public class ArticleController extends HttpServlet {
 //            }
 //        }
 
-        String productName = new ArticleServices().getAvailableArticles().stream()
-                .filter(article -> article.getId() == articleId)
+        String productName = availableProducts.stream()
+                .filter(article -> article.getId().equals(articleId))
                 .findFirst()
                 .orElseGet(() -> ArticleServices.noArticle)
                 .getName();
@@ -73,11 +74,19 @@ public class ArticleController extends HttpServlet {
             basket = new HashMap<>();
             request.getSession().setAttribute("selectedArticles", basket);
         }
-        basket.compute(articleId, (k, v) -> (v == null) ? quantity : v.add(quantity));
+        basket.compute(articleId, (k, v) -> {
+            if (v == null) {
+                return quantity;
+            } else {
+                return v.add(quantity);
+            }
+//            return (v == null) ? quantity : v.add(quantity);
+        });
 
-        response.getWriter().println("<html><body" +
+        response.getWriter().println("<html><body>" +
                 "<p>Article " + productName + " added to the basket</p>" +
                 "<a href=\"/shop\">Add another...</a>" +
+                "<a href=\"/basket\">Show basket...</a>" +
                 "</body></html>");
 
         System.out.println("--- basket:");
