@@ -52,6 +52,15 @@ public class ArticleController extends HttpServlet {
         long articleId = Long.parseLong(request.getParameter("quantity"));
         BigDecimal quantity = new BigDecimal(request.getParameter("articleId"));
 
+//        if (articles == null) { // double lock
+//            synchronized (HelloWorldServlet.class) {
+//                if (articles == null) {
+//                    articles = new ArrayList<>();
+//                    articles = Collections.synchronizedList(new ArrayList<>());
+//                }
+//            }
+//        }
+
         String productName = new ArticleServices().getAvailableArticles().stream()
                 .filter(article -> article.getId() == articleId)
                 .findFirst()
