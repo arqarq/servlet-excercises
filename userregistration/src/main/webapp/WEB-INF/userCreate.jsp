@@ -11,7 +11,7 @@
     <title>New User Account</title>
 </head>
 <body>
-<form>
+<form method="post">
     <label for="firstName">First name: </label>
     <input type="text" id="firstName" name="firstName">
     <br>
@@ -26,6 +26,8 @@
     <br>
     <label for="houseNo">House No.: </label>
     <input type="text" id="houseNo" name="houseNo">
+    <br>
+    <input type="submit" value="Register">
 </form>
 </body>
 </html>
