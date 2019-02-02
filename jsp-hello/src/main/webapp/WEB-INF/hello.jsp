@@ -19,6 +19,10 @@
 </p>
 <%--<%! private int counter; %>--%>
 <%--<p>Stronę odwiedzono: <%= ++counter %> razy.</p>--%>
-<p>Stronę odwiedzono: <% out.print(Counter.INSTANCE.getCount()); %> razy.</p>
+<p>
+    <%= request.getParameter("name") %>
+    <br>
+    Stronę odwiedzono: <% out.print(Counter.INSTANCE.getCount()); %> razy.
+</p>
 </body>
 </html>
