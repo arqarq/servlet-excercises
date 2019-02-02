@@ -45,7 +45,7 @@ public class Basket extends HttpServlet {
 
     private String getShowProductsAsHtmlRows() {
         return availableProducts.stream()
-                .map(article -> "<tr><th>" + article.getName() + "</th></tr>")
+                .map(article -> "<tr><th>" + article.getName() + "</th><th>0</th></tr>")
                 .collect(Collectors.joining());
     }
 }
