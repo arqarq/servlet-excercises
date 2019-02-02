@@ -21,6 +21,7 @@ public class Basket extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Map<Long, BigDecimal> basket = (Map<Long, BigDecimal>) request.getSession().getAttribute("selectedArticles");
+
         if (basket == null) {
             response.getWriter().println("<html><body>" +
                     "<p>Basket is empty</p>" +
@@ -36,16 +37,18 @@ public class Basket extends HttpServlet {
                 "<th>Product</th>" +
                 "<th>Quantity</th>" +
                 "</tr>" +
-                getShowProductsAsHtmlRows() +
+                showProductsAsHtmlRows(basket) +
                 "</tbody></table>" +
                 "<br>" +
                 "<a href=\"/shop\">Add another...</a>" +
                 "</body></html>");
     }
 
-    private String getShowProductsAsHtmlRows() {
-        return availableProducts.stream()
-                .map(article -> "<tr><th>" + article.getName() + "</th><th>0</th></tr>")
+    private String showProductsAsHtmlRows(Map<Long, BigDecimal> basket) {
+        return basket.entrySet().stream()
+                .map(article -> {
+                    return "<tr><th>" + article + "</th><th>0</th></tr>";
+                })
                 .collect(Collectors.joining());
     }
 }
