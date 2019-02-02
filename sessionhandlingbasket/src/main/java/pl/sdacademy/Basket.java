@@ -30,24 +30,42 @@ public class Basket extends HttpServlet {
                     "</body></html>");
             return;
         }
-        response.getWriter().println("<html><body>" +
-                "<p>Basket content</p>" +
-                "<table border=\"1\"><tbody>" +
-                "<tr>" +
-                "<th>Product</th>" +
-                "<th>Quantity</th>" +
-                "</tr>" +
-                showProductsAsHtmlRows(basket) +
-                "</tbody></table>" +
+        response.getWriter().println("<html>" +
+                "<style>\n" +
+                "    table, td, th {\n" +
+                "        padding: 3px;\n" +
+                "    }\n" +
+                "</style>" +
+                "<body>" +
+                "<table border=\"1\" style=\"border-collapse: collapse\">" +
+                "<caption>Basket content</caption>" +
+                "<tbody><tr>" +
+                "<th align=\"left\">product</th>" +
+                "<th align=\"left\">qty</th>" +
+//                "<th style=\"border: none\" border=\"0\"></th>" +
+                showBoughtProductsAsHtmlRows(basket) +
+                "</tr></tbody>" +
+                "</table>" +
                 "<br>" +
                 "<a href=\"/shop\">Add another...</a>" +
                 "</body></html>");
     }
 
-    private String showProductsAsHtmlRows(Map<Long, BigDecimal> basket) {
+    private String showBoughtProductsAsHtmlRows(Map<Long, BigDecimal> basket) {
         return basket.entrySet().stream()
-                .map(article -> {
-                    return "<tr><th>" + article + "</th><th>0</th></tr>";
+                .map(entry -> {
+                    BigDecimal quantityBought = entry.getValue();
+                    return "<tr><td align=\"left\">" +
+                            availableProducts.stream()
+                                    .filter(article -> article.getId().equals(entry.getKey()))
+                                    .findFirst()
+                                    .orElseGet(() -> ArticleServices.noArticle)
+                                    .getName() +
+                            "</td><td align=\"left\">" +
+                            quantityBought +
+                            "</td><td align=\"left\">" +
+                            (quantityBought.compareTo(BigDecimal.ONE) == 0 ? "pc." : "pcs.") +
+                            "</td></tr>";
                 })
                 .collect(Collectors.joining());
     }
