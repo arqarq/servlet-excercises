@@ -1,20 +1,13 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Madzia
-  Date: 03.02.2019
-  Time: 12:49
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page contentType="text/html; UTF-8" language="java" %>
+<html lang="pl">
 <head>
-    <title>User added</title>
     <meta charset="UTF-8">
+    <title>Użytkownik dodany</title>
 </head>
 <body>
 <%@ include file="header.html" %>
-<p>User added: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
+<p>user added: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
 </p>
-<a href="users">show users</a>
+<a href="users">pokaż użytkowników</a>
 </body>
 </html>

@@ -20,7 +20,6 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("userById", new UserDTO()); // puste pola przy pierwszym wejściu
         request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request, response);
     }
 

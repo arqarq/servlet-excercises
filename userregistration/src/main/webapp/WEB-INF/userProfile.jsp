@@ -1,16 +1,9 @@
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Madzia
-  Date: 03.02.2019
-  Time: 14:57
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="pl">
 <head>
-    <title>User Profile</title>
     <meta charset="UTF-8">
+    <title>Dane użytkownika</title>
 </head>
 <body>
 <% UserDTO userDTOById = (UserDTO) request.getAttribute("userById"); %>
@@ -27,5 +20,7 @@
 <br>
 <label for="miasto">miasto: </label>
 <span id="miasto"><%= userDTOById.getAddressDTO().getCity() %></span>
+<br><br>
+<a href="users">wróć</a>
 </body>
 </html>

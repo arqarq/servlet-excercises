@@ -1,9 +1,9 @@
+<%@ page contentType="text/html; UTF-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
-<html lang="en">
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+<html lang="pl">
 <head>
-    <title>New user account</title>
     <meta charset="UTF-8">
+    <title>Nowy użytkownik</title>
 </head>
 <body>
 <%@ include file="header.html" %>
@@ -28,7 +28,7 @@
     <input type="text" id="houseNo" name="houseNo"
            value="<%= userDTO != null ? userDTO.getAddressDTO().getHouseNo() : "" %>">
     <br>
-    <input type="submit" value="<%= userDTO != null ? "Update user data" : "Register user" %>">
+    <input type="submit" value="<%= userDTO != null ? "Zaktualizuj dane użytkownika" : "Zarejestruj użytkownika" %>">
 </form>
 </body>
 </html>
