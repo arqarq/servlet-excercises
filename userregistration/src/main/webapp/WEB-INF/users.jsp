@@ -26,14 +26,10 @@
                 .map(userDTO -> "<tr>" +
                         "<td>" + userDTO.getFirstName() + "</td>" +
                         "<td>" + userDTO.getLastName() + "</td>" +
-                        "<td>" + userDTO.getAddressDTO() + "</td></tr>")
+                        "<td>" + userDTO.getAddressDTO() + "</td>" +
+                        "<td><a href=\"\">Show user</a></td></tr>")
                 .collect(Collectors.joining()));
     %>
-    <%--<tr>--%>
-    <%--<td>1</td>--%>
-    <%--<td>2</td>--%>
-    <%--<td>3</td>--%>
-    <%--</tr>--%>
     </tbody>
 </table>
 <a href="newUser">Dodaj nowego użytkownika</a>

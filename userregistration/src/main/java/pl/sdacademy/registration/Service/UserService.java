@@ -37,4 +37,12 @@ public class UserService {
                 .map(UserDTO::new)
                 .collect(Collectors.toList());
     }
+
+    public UserDTO getUserById(Long userId) {
+        User user = userDAO.findById(userId);
+        if (user != null) {
+            return new UserDTO(user);
+        }
+        return null;
+    }
 }
