@@ -1,17 +1,25 @@
 package pl.sdacademy.registration.DTO;
 
+import pl.sdacademy.registration.User;
+
 public class UserDTO {
     private Long id;
     private String firstName;
     private String lastName;
     private AddressDTO addressDTO;
 
-    public Long getId() {
-        return id;
+    public UserDTO() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public UserDTO(User user) {
+        this.id = user.getId();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.addressDTO = new AddressDTO(user.getAddress());
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getFirstName() {

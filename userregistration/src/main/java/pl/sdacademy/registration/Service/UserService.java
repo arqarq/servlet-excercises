@@ -8,13 +8,15 @@ import pl.sdacademy.registration.User;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.Collection;
+import java.util.stream.Collectors;
 
 @Singleton
 public class UserService {
     @Inject
     private UserDAO userDAO;
 
-    void saveUser(UserDTO userDTO) {
+    public void saveUser(UserDTO userDTO) {
         User user = new User();
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
@@ -28,5 +30,11 @@ public class UserService {
             user.setAddress(address);
         }
         userDAO.saveUser(user);
+    }
+
+    public Collection<UserDTO> getUsers() {
+        return userDAO.getUsers().stream()
+                .map(UserDTO::new)
+                .collect(Collectors.toList());
     }
 }

@@ -19,7 +19,7 @@ public class UserDAO {
         entityManager.persist(user);
     }
 
-    Collection<User> getUsers() {
+    public Collection<User> getUsers() {
         Query query = entityManager.createQuery("SELECT u FROM User u");
         return query.getResultList();
     }

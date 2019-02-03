@@ -1,5 +1,7 @@
 package pl.sdacademy.registration;
 
+import pl.sdacademy.registration.DTO.AddressDTO;
+import pl.sdacademy.registration.DTO.UserDTO;
 import pl.sdacademy.registration.Service.UserService;
 
 import javax.inject.Inject;
@@ -24,6 +26,18 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UserDTO userToRegister = new UserDTO();
+        AddressDTO addressOfTheUserToRegister = new AddressDTO();
 
+        userToRegister.setFirstName(request.getParameter("firstName"));
+        userToRegister.setLastName(request.getParameter("lastName"));
+        addressOfTheUserToRegister.setCity(request.getParameter("city"));
+        addressOfTheUserToRegister.setStreet(request.getParameter("street"));
+        addressOfTheUserToRegister.setHouseNo(request.getParameter("houseNo"));
+        userToRegister.setAddressDTO(addressOfTheUserToRegister);
+        userService.saveUser(userToRegister);
+
+        request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
+//        response.sendRedirect("users");
     }
 }
