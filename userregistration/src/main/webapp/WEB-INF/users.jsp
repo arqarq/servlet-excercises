@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>Users</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 <table border="1" style="border-collapse: collapse; padding: 3px">
@@ -20,6 +21,8 @@
     <th>first name</th>
     <th>last name</th>
     <th>address</th>
+    <th>action</th>
+    <th>action</th>
     <%
         Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
         out.println(usersDTO.stream()
@@ -27,7 +30,8 @@
                         "<td>" + userDTO.getFirstName() + "</td>" +
                         "<td>" + userDTO.getLastName() + "</td>" +
                         "<td>" + userDTO.getAddressDTO() + "</td>" +
-                        "<td><a href=\"\">Show user</a></td></tr>")
+                        "<td><a href=\"userProfile?id=" + userDTO.getId() + "\">show user</a></td>" +
+                        "<td><a href=\"userProfileEdit?id=" + userDTO.getId() + "\">edit user</a></td></tr>")
                 .collect(Collectors.joining()));
     %>
     </tbody>

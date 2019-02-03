@@ -9,10 +9,12 @@
 <html>
 <head>
     <title>User added</title>
+    <meta charset="UTF-8">
 </head>
 <body>
+<%@ include file="header.html" %>
 <p>User added: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
 </p>
-<a href="users">Show users</a>
+<a href="users">show users</a>
 </body>
 </html>

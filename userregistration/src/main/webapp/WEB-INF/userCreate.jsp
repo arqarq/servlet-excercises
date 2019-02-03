@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>New User Account</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 <form method="post">
