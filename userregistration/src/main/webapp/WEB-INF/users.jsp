@@ -2,6 +2,7 @@
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.stream.Collectors" %>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">

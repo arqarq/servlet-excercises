@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; UTF-8" language="java" %>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
