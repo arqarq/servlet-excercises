@@ -1,6 +1,6 @@
 package pl.sdacademy.registration.DTO;
 
-import pl.sdacademy.registration.User;
+import pl.sdacademy.registration.model.User;
 
 public class UserDTO {
     private Long id;

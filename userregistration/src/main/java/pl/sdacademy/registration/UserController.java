@@ -1,7 +1,7 @@
 package pl.sdacademy.registration;
 
 import pl.sdacademy.registration.DTO.UserDTO;
-import pl.sdacademy.registration.Service.UserService;
+import pl.sdacademy.registration.service.UserService;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;

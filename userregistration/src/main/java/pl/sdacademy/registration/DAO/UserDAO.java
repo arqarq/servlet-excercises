@@ -1,6 +1,6 @@
 package pl.sdacademy.registration.DAO;
 
-import pl.sdacademy.registration.User;
+import pl.sdacademy.registration.model.User;
 
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;

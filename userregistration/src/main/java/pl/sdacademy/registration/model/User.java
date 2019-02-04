@@ -1,4 +1,4 @@
-package pl.sdacademy.registration;
+package pl.sdacademy.registration.model;
 
 import javax.persistence.*;
 

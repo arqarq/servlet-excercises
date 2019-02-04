@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<%@ page contentType="text/html; UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; UTF-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">

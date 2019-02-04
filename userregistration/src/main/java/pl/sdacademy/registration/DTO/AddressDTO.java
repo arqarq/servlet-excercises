@@ -1,6 +1,6 @@
 package pl.sdacademy.registration.DTO;
 
-import pl.sdacademy.registration.Address;
+import pl.sdacademy.registration.model.Address;
 
 public class AddressDTO {
     private Long id;

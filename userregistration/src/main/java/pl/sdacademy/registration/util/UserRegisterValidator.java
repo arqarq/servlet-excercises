@@ -1,6 +1,7 @@
-package pl.sdacademy.registration;
+package pl.sdacademy.registration.util;
 
 import org.apache.commons.lang3.StringUtils;
+import pl.sdacademy.registration.model.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
