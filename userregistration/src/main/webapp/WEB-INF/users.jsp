@@ -19,7 +19,7 @@
     }
 
     span {
-        font-size: 75%%;
+        font-size: 75%;
     }
 
     td.act {
