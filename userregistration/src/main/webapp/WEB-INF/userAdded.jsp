@@ -1,8 +1,7 @@
-<%@ page pageEncoding="UTF-8" contentType="text/html; UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Użytkownik dodany</title>
 </head>
 <body>

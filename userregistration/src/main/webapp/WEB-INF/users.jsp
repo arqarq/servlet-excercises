@@ -1,22 +1,42 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.stream.Collectors" %>
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Użytkownicy</title>
 </head>
+<style>
+    th {
+        padding: 3px;
+        background-color: darkgray;
+    }
+
+    td {
+        padding: 3px;
+        background-color: lightgray;
+    }
+
+    span {
+        font-size: 75%%;
+    }
+
+    td.act {
+        text-align: center;
+    }
+</style>
 <body>
-<table border="1" style="border-collapse: collapse; padding: 3px">
+<%@ include file="header.html" %>
+<table border="1" style="border-collapse: collapse">
     <caption>Zarejestrowani użytkownicy</caption>
     <tbody>
     <th>first name</th>
     <th>last name</th>
     <th>address</th>
-    <th>action</th>
-    <th>action</th>
+    <th>pokaż</th>
+    <th>edytuj</th>
+    <th>usuń</th>
     <%
         Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
         out.println(usersDTO.stream()
@@ -24,8 +44,9 @@
                         "<td>" + userDTO.getFirstName() + "</td>" +
                         "<td>" + userDTO.getLastName() + "</td>" +
                         "<td>" + userDTO.getAddressDTO() + "</td>" +
-                        "<td><a href=\"userProfile?id=" + userDTO.getId() + "\">show user</a></td>" +
-                        "<td><a href=\"userProfileEdit?id=" + userDTO.getId() + "\">edit user</a></td>" +
+                        "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
+                        "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
+                        "<td class=\"act\"><span>(klik)</span></td>" +
                         "</tr>")
                 .collect(Collectors.joining()));
     %>

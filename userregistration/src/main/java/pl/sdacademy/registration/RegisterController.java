@@ -29,6 +29,8 @@ public class RegisterController extends HttpServlet {
         UserDTO userToRegister = new UserDTO();
         AddressDTO addressOfTheUserToRegister = new AddressDTO();
 
+        request.setCharacterEncoding("utf-8");
+
         userToRegister.setFirstName(request.getParameter("firstName"));
         userToRegister.setLastName(request.getParameter("lastName"));
         addressOfTheUserToRegister.setCity(request.getParameter("city"));

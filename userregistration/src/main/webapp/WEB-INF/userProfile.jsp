@@ -1,13 +1,14 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <!DOCTYPE html>
-<html lang="pl">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Dane użytkownika</title>
 </head>
 <body>
+<%@ include file="header.html" %>
 <% UserDTO userDTOById = (UserDTO) request.getAttribute("userById"); %>
+<br>
 <label for="first">imię: </label>
 <span id="first"><%= userDTOById.getFirstName() %></span>
 <br>
