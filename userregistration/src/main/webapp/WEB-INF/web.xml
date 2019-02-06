@@ -4,24 +4,4 @@
 
 <web-app>
     <display-name>Archetype Created Web Application</display-name>
-    <filter>
-        <filter-name>WebFilterUTF8</filter-name>
-        <filter-class>pl.sdacademy.registration.util.WebFilterUTF8</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>WebFilterUTF8</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    <!--<filter>-->
-    <!--<filter-name>DefaultCharacterSetFilter</filter-name>-->
-    <!--<filter-class>org.apache.catalina.filters.AddDefaultCharsetFilter</filter-class>-->
-    <!--<init-param>-->
-    <!--<param-name>encoding</param-name>-->
-    <!--<param-value>UTF-8</param-value>-->
-    <!--</init-param>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>DefaultCharacterSetFilter</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
 </web-app>
