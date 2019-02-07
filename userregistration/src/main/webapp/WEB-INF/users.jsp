@@ -3,7 +3,7 @@
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.stream.Collectors" %>
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <title>Użytkownicy</title>
 </head>
@@ -33,7 +33,7 @@
     <tbody>
     <th>first name</th>
     <th>last name</th>
-    <th>address</th>
+    <th>adres</th>
     <th>pokaż</th>
     <th>edytuj</th>
     <th>usuń</th>

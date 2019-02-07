@@ -6,7 +6,7 @@
 </head>
 <body>
 <%@ include file="header.html" %>
-<p>użytkownik dodany: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
+<p>użytkownik zaktualizowany: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
 </p>
 <a href="users">pokaż użytkowników</a>
 </body>

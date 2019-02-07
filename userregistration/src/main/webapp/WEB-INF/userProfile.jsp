@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <title>Dane użytkownika</title>
 </head>

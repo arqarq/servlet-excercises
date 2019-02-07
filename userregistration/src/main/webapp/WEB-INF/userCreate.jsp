@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
     <title>Nowy użytkownik</title>
 </head>
@@ -10,7 +10,17 @@
 <%
     UserDTO userDTO = (UserDTO) request.getAttribute("userById");
 %>
-<form method="post" action="newUser">
+<form method="post" action="
+<%
+if (userDTO != null) {
+//    request.setAttribute("id", userDTO.getId());
+//    request.setAttribute("addressId", userDTO.getAddressDTO().getId());
+    out.write("userProfileEdit");
+} else {
+    out.write("newUser");
+}
+%>
+">
     <label for="firstName">imię: </label>
     <input type="text" id="firstName" name="firstName" value="<%= userDTO != null ? userDTO.getFirstName() : "" %>">
     <br>

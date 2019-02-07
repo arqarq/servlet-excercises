@@ -20,7 +20,6 @@ public class UserService {
         User user = new User();
         user.setFirstName(userDTO.getFirstName());
         user.setLastName(userDTO.getLastName());
-
         AddressDTO addressDTO = userDTO.getAddressDTO();
         if (addressDTO != null) {
             Address address = new Address();
@@ -30,6 +29,31 @@ public class UserService {
             user.setAddress(address);
         }
         userDAO.saveUser(user);
+    }
+
+    public void updateUser(UserDTO userDTO) {
+        userDAO.updateUser(makeJpaObjFromDTO(userDTO));
+    }
+
+    public void deleteUser(UserDTO userDTO) {
+        userDAO.deleteUser(makeJpaObjFromDTO(userDTO));
+    }
+
+    private User makeJpaObjFromDTO(UserDTO userDTO) {
+        User user = new User();
+        user.setFirstName(userDTO.getFirstName());
+        user.setLastName(userDTO.getLastName());
+        user.setId(userDTO.getId());
+        AddressDTO addressDTO = userDTO.getAddressDTO();
+        if (addressDTO != null) {
+            Address address = new Address();
+            address.setCity(addressDTO.getCity());
+            address.setStreet(addressDTO.getStreet());
+            address.setHouseNo(addressDTO.getHouseNo());
+            address.setId(addressDTO.getId());
+            user.setAddress(address);
+        }
+        return user;
     }
 
     public Collection<UserDTO> getUsers() {
