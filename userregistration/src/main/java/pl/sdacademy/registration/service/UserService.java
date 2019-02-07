@@ -1,9 +1,9 @@
 package pl.sdacademy.registration.service;
 
-import pl.sdacademy.registration.model.Address;
 import pl.sdacademy.registration.DAO.UserDAO;
 import pl.sdacademy.registration.DTO.AddressDTO;
 import pl.sdacademy.registration.DTO.UserDTO;
+import pl.sdacademy.registration.model.Address;
 import pl.sdacademy.registration.model.User;
 
 import javax.inject.Inject;

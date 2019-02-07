@@ -19,6 +19,16 @@ public class UserDAO {
         entityManager.persist(user);
     }
 
+    @Transactional
+    public void updateUser(User user) {
+        entityManager.merge(user);
+    }
+
+    @Transactional
+    public void deleteUser(User user) {
+        entityManager.remove(user);
+    }
+
     public Collection<User> getUsers() {
         Query query = entityManager.createQuery("SELECT u FROM User u");
         return query.getResultList();
