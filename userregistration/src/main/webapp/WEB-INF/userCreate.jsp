@@ -13,14 +13,17 @@
 <form method="post" action="
 <%
 if (userDTO != null) {
-//    request.setAttribute("id", userDTO.getId());
-//    request.setAttribute("addressId", userDTO.getAddressDTO().getId());
     out.write("userProfileEdit");
 } else {
     out.write("newUser");
 }
 %>
 ">
+    <%
+        if (userDTO != null) {
+            out.write("<input type=\"hidden\" name=\"id\" value=\"" + userDTO.getId() + "\">");
+        }
+    %>
     <label for="firstName">imię: </label>
     <input type="text" id="firstName" name="firstName" value="<%= userDTO != null ? userDTO.getFirstName() : "" %>">
     <br>

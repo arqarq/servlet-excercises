@@ -14,9 +14,6 @@ import java.io.IOException;
 
 @WebServlet(name = "UserProfileEditController", value = "/userProfileEdit")
 public class UserProfileEditController extends HttpServlet {
-    private Long idToUpdate;
-    private Long addressIdToUpdate;
-
     @Inject
     private UserService userService;
 
@@ -25,8 +22,6 @@ public class UserProfileEditController extends HttpServlet {
             throws ServletException, IOException {
         String id = request.getParameter("id");
         UserDTO userById = userService.getUserById(Long.parseLong(id));
-        idToUpdate = userById.getId();
-        addressIdToUpdate = userById.getAddressDTO().getId();
         request.setAttribute("userById", userById);
         request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request, response);
     }
@@ -34,14 +29,12 @@ public class UserProfileEditController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.getWriter().println("TODO");
-        UserDTO userToUpdate = new UserDTO();
-        AddressDTO addressOfTheUserToUpdate = new AddressDTO();
-
         request.setCharacterEncoding("utf-8");
 
-        userToUpdate.setId(idToUpdate);
-        addressOfTheUserToUpdate.setId(addressIdToUpdate);
+        Long id = Long.parseLong(request.getParameter("id"));
+        UserDTO userToUpdate = userService.getUserById(id);
+        AddressDTO addressOfTheUserToUpdate = userToUpdate.getAddressDTO();
+
         userToUpdate.setFirstName(request.getParameter("firstName"));
         userToUpdate.setLastName(request.getParameter("lastName"));
         addressOfTheUserToUpdate.setCity(request.getParameter("city"));

@@ -38,21 +38,7 @@ public class RegisterController extends HttpServlet {
         addressOfTheUserToRegister.setHouseNo(request.getParameter("houseNo"));
         userToRegister.setAddressDTO(addressOfTheUserToRegister);
 
-//        Long passedId = (Long) request.getAttribute("Id");
-//        if (passedId != null) {
-//            userToRegister.setId(passedId);
-//            userService.updateUser(userToRegister);
-//            response.setContentType("text/html;charset=utf-8");
-//            response.getWriter().println("zaktualizowano użytkownika");
-//        } else {
         userService.saveUser(userToRegister);
-//            userToRegister.setLastName("stolec");
-//            userToRegister.setId(1L);
-//            userService.updateUser(userToRegister);
-
         request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
-//        }
-
-//        response.sendRedirect("users");
     }
 }

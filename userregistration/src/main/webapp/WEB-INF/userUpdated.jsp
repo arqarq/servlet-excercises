@@ -6,6 +6,7 @@
 </head>
 <body>
 <%@ include file="header.html" %>
+<% request.setCharacterEncoding("utf-8"); %>
 <p>użytkownik zaktualizowany: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
 </p>
 <a href="users">pokaż użytkowników</a>
