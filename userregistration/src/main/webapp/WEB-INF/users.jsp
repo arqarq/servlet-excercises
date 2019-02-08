@@ -8,14 +8,18 @@
     <title>Użytkownicy</title>
 </head>
 <style>
-    th {
-        padding: 3px;
-        background-color: darkgray;
+    table {
+        border-collapse: collapse;
     }
 
-    td {
+    td, th {
+        border: 1px solid #dddddd;
         padding: 3px;
-        background-color: lightgray;
+        /*background-color: darkgray;*/
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
     }
 
     span {
@@ -28,15 +32,17 @@
 </style>
 <body>
 <%@ include file="header.html" %>
-<table border="1" style="border-collapse: collapse">
+<table>
     <caption>Zarejestrowani użytkownicy</caption>
     <tbody>
-    <th>first name</th>
-    <th>last name</th>
-    <th>adres</th>
-    <th>pokaż</th>
-    <th>edytuj</th>
-    <th>usuń</th>
+    <tr>
+        <th>first name</th>
+        <th>last name</th>
+        <th>adres</th>
+        <th>pokaż</th>
+        <th>edytuj</th>
+        <th>usuń</th>
+    </tr>
     <%
         Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
         out.println(usersDTO.stream()
