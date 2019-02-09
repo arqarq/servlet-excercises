@@ -45,16 +45,22 @@
     </tr>
     <%
         Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
-        out.println(usersDTO.stream()
-                .map(userDTO -> "<tr>" +
-                        "<td>" + userDTO.getFirstName() + "</td>" +
-                        "<td>" + userDTO.getLastName() + "</td>" +
-                        "<td>" + userDTO.getAddressDTO() + "</td>" +
-                        "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
-                        "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
-                        "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
-                        "</tr>")
-                .collect(Collectors.joining()));
+        if (usersDTO.isEmpty()) {
+            out.write("<tr>" +
+                    "<td class=\"act\" colspan=\"6\">brak użytkowników</td>" +
+                    "</tr>");
+        } else {
+            out.println(usersDTO.stream()
+                    .map(userDTO -> "<tr>" +
+                            "<td>" + userDTO.getFirstName() + "</td>" +
+                            "<td>" + userDTO.getLastName() + "</td>" +
+                            "<td>" + userDTO.getAddressDTO() + "</td>" +
+                            "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
+                            "</tr>")
+                    .collect(Collectors.joining()));
+        }
     %>
     </tbody>
 </table>
