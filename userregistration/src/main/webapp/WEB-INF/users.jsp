@@ -52,7 +52,7 @@
                         "<td>" + userDTO.getAddressDTO() + "</td>" +
                         "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
                         "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
-                        "<td class=\"act\"><span>(klik)</span></td>" +
+                        "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
                         "</tr>")
                 .collect(Collectors.joining()));
     %>
