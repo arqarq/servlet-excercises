@@ -36,8 +36,8 @@
     <caption>Zarejestrowani użytkownicy</caption>
     <tbody>
     <tr>
-        <th>first name</th>
-        <th>last name</th>
+        <th>imię</th>
+        <th>nazwisko</th>
         <th>adres</th>
         <th>pokaż</th>
         <th>edytuj</th>
