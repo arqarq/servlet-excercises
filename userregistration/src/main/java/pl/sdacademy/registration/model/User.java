@@ -2,7 +2,7 @@ package pl.sdacademy.registration.model;
 
 import javax.persistence.*;
 
-@Entity(name = "User")
+@Entity(name = "Users")
 public class User {
     private Long id;
     private String firstName;

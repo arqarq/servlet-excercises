@@ -32,7 +32,7 @@ public class UserDAO {
     }
 
     public Collection<User> getUsers() {
-        Query query = entityManager.createQuery("SELECT u FROM User u");
+        Query query = entityManager.createQuery("SELECT u FROM Users u");
         return query.getResultList();
     }
 
