@@ -42,6 +42,8 @@ if (userDTO != null) {
            value="<%= userDTO != null ? userDTO.getAddressDTO().getHouseNo() : "" %>">
     <br>
     <input type="submit" value="<%= userDTO != null ? "Zaktualizuj dane użytkownika" : "Zarejestruj użytkownika" %>">
+    <p></p>
+    <a href="users">pokaż użytkowników</a>
 </form>
 </body>
 </html>
