@@ -21,7 +21,9 @@ public class UserProfileDeleteConfirmedController extends HttpServlet {
         String id = request.getParameter("id");
         Long idOfProfileToDelete = Long.parseLong(id);
         UserDTO userById = userService.getUserById(idOfProfileToDelete);
-        userService.deleteUser(userById);
+        if (userById != null) {
+            userService.deleteUser(userById);
+        }
         response.sendRedirect("users");
     }
 }
