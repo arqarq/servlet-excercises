@@ -25,6 +25,9 @@
 <br>
 <label for="miasto">miasto: </label>
 <span id="miasto"><%= userDTOById.getAddressDTO().getCity() %></span>
+<br>
+<label for="addressDTO">adres/toString():</label>
+<span id="addressDTO"><jsp:getProperty name="userById" property="addressDTO"/></span>
 <br><br>
 <a href="users">wróć</a>
 </body>
