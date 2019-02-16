@@ -3,13 +3,19 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <title>Nowy użytkownik</title>
+    <title>
+        <%
+            UserDTO userDTO = (UserDTO) request.getAttribute("userById");
+            if (userDTO != null) {
+                out.write("Edycja danych użytkownika");
+            } else {
+                out.write("Nowy użytkownik");
+            }
+        %>
+    </title>
 </head>
 <body>
 <%@ include file="header.html" %>
-<%
-    UserDTO userDTO = (UserDTO) request.getAttribute("userById");
-%>
 <form method="post" action="
 <%
 if (userDTO != null) {
