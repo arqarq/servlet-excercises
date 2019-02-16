@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
+<%@ page isELIgnored="false" %>
 <jsp:useBean id="userById" class="pl.sdacademy.registration.DTO.UserDTO" scope="request"/>
 <!DOCTYPE html>
 <html lang="pl">
@@ -25,6 +26,9 @@
 <br>
 <label for="miasto">miasto: </label>
 <span id="miasto"><%= userDTOById.getAddressDTO().getCity() %></span>
+<br>
+<label for="cityAsEL"> miasto/using EL:</label>
+<span id="cityAsEL">${userById.addressDTO.city}</span>
 <br>
 <label for="addressDTO">adres/toString():</label>
 <span id="addressDTO"><jsp:getProperty name="userById" property="addressDTO"/></span>
