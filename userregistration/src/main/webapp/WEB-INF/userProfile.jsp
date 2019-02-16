@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
-<%@ page isELIgnored="false" %>
+<%--<%@ page isELIgnored="false" %>--%>
 <jsp:useBean id="userById" class="pl.sdacademy.registration.DTO.UserDTO" scope="request"/>
 <!DOCTYPE html>
 <html lang="pl">
