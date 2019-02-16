@@ -32,23 +32,23 @@ if (userDTO.getId() != null) {
     %>
     <label for="firstName">imię: </label>
     <input type="text" id="firstName" name="firstName"
-           value="<%= userDTO.getId() != null ? userDTO.getFirstName() : "" %>">
+           value="<%= userDTO.getFirstName() != null ? userDTO.getFirstName() : "" %>">
     <br>
     <label for="lastName">nazwisko: </label>
     <input type="text" id="lastName" name="lastName"
-           value="<%= userDTO.getId() != null ? userDTO.getLastName() : "" %>">
+           value="<%= userDTO.getLastName() != null ? userDTO.getLastName() : "" %>">
     <br>
     <label for="city">miasto: </label>
     <input type="text" id="city" name="city"
-           value="<%= userDTO.getId() != null ? userDTO.getAddressDTO().getCity() : "" %>">
+           value="<%= userDTO.getAddressDTO().getCity() != null ? userDTO.getAddressDTO().getCity() : "" %>">
     <br>
     <label for="street">ulica: </label>
     <input type="text" id="street" name="street"
-           value="<%= userDTO.getId() != null ? userDTO.getAddressDTO().getStreet() : "" %>">
+           value="<%= userDTO.getAddressDTO().getStreet() != null ? userDTO.getAddressDTO().getStreet() : "" %>">
     <br>
     <label for="houseNo">numer domu: </label>
     <input type="text" id="houseNo" name="houseNo"
-           value="<%= userDTO.getId() != null ? userDTO.getAddressDTO().getHouseNo() : "" %>">
+           value="<%= userDTO.getAddressDTO().getHouseNo() != null ? userDTO.getAddressDTO().getHouseNo() : "" %>">
     <br>
     <input type="submit"
            value="<%= userDTO.getId() != null ? "Zaktualizuj dane użytkownika" : "Zarejestruj użytkownika" %>">

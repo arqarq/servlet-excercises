@@ -24,6 +24,9 @@ public class RegisterController extends HttpServlet {
             throws ServletException, IOException {
         UserDTO emptyUserDTO = new UserDTO();
         emptyUserDTO.setAddressDTO(new AddressDTO());
+        if (request.getSession(false).getAttribute("userTemp") != null) {
+            emptyUserDTO = (UserDTO) request.getSession(false).getAttribute("userTemp");
+        }
         request.setAttribute("userById", emptyUserDTO);
         request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request, response);
     }
@@ -45,10 +48,11 @@ public class RegisterController extends HttpServlet {
 
         Collection<String> errorStrings = UserRegisterValidator.validateUser(userToRegister);
         if (errorStrings.isEmpty()) {
+            request.getSession(false).removeAttribute("userTemp");
             userService.saveUser(userToRegister);
         } else {
-//            userToRegister.setId(-1L);
             request.setAttribute("errorsFromValidation", errorStrings);
+            request.getSession().setAttribute("userTemp", userToRegister);
         }
         request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
     }

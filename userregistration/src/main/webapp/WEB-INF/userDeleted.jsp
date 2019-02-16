@@ -13,7 +13,7 @@
 <table>
     <tbody>
     <tr>
-        <td><a href="userProfileDeleteConfirmed?id=<%= userDTO.getId() %>">tak</a></td>
+        <td><a href="userProfileDeleteConfirmed?id=<%= userDTO.getId() %>">tak</a>&ensp;</td>
         <td><a href="users">nie</a></td>
     </tr>
     </tbody>

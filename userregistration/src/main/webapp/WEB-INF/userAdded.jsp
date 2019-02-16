@@ -16,11 +16,10 @@
             <c:forEach var="string" items="${errorsFromValidation}">
                 ${string}<br>
             </c:forEach>
+            <a href="newUser">popraw</a>
         </c:otherwise>
     </c:choose>
 </p>
-<a href="javascript:history.back()">wróć</a>
-<br>
 <a href="users">pokaż użytkowników</a>
 </body>
 </html>
