@@ -26,7 +26,6 @@ public class UserDAO {
 
     @Transactional
     public void deleteUser(User user) {
-        entityManager.detach(user);
         User merged = entityManager.merge(user);
         entityManager.remove(merged);
     }

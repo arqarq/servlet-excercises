@@ -21,6 +21,7 @@ public class UserController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Collection<UserDTO> usersDTO = userService.getUsers();
+//        usersDTO.clear();
         request.setAttribute("usersDTO", usersDTO);
         request.getRequestDispatcher("WEB-INF/users.jsp").forward(request, response);
     }

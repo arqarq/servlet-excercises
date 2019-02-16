@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.Comparator" %>
@@ -65,6 +66,41 @@
                     .collect(Collectors.joining()));
         }
     %>
+    </tbody>
+</table>
+<br>
+<table>
+    <caption>Zarejestrowani użytkownicy (JSP Standard Tag Library)<br>(bez sortowania po numerze ID w DB)</caption>
+    <tbody>
+    <tr>
+        <th>imię</th>
+        <th>nazwisko</th>
+        <th>miasto</th>
+        <th>ulica</th>
+        <th>numer domu</th>
+        <th>pokaż</th>
+        <th>edytuj</th>
+        <th>usuń</th>
+    </tr>
+    <c:choose>
+        <c:when test="${empty usersDTO}">
+            <c:out value="<tr><td class=\"act\" colspan=\"8\">brak użytkowników</td></tr>" escapeXml="false"/>
+        </c:when>
+        <c:otherwise>
+            <c:forEach var="user" items="${usersDTO}">
+                <tr>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.addressDTO.city}</td>
+                    <td>${user.addressDTO.street}</td>
+                    <td>${user.addressDTO.houseNo}</td>
+                    <td class="act"><a href="userProfile?id=${user.id}"><span>(klik)</span></a></td>
+                    <td class="act"><a href="userProfileEdit?id=${user.id}"><span>(klik)</span></a></td>
+                    <td class="act"><a href="userProfileDelete?id=${user.id}"><span>(klik)</span></a></td>
+                </tr>
+            </c:forEach>
+        </c:otherwise>
+    </c:choose>
     </tbody>
 </table>
 <br>
