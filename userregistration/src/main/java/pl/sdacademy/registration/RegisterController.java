@@ -22,6 +22,9 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        UserDTO emptyUserDTO = new UserDTO();
+        emptyUserDTO.setAddressDTO(new AddressDTO());
+        request.setAttribute("userById", emptyUserDTO);
         request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request, response);
     }
 
@@ -44,6 +47,7 @@ public class RegisterController extends HttpServlet {
         if (errorStrings.isEmpty()) {
             userService.saveUser(userToRegister);
         } else {
+//            userToRegister.setId(-1L);
             request.setAttribute("errorsFromValidation", errorStrings);
         }
         request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
