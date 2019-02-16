@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.stream.Collectors" %>
 <!DOCTYPE html>
 <html lang="pl">
@@ -51,6 +52,8 @@
                     "</tr>");
         } else {
             out.println(usersDTO.stream()
+//                    .sorted((userDTO1, userDTO2) -> Long.compare(userDTO1.getId(), userDTO2.getId()))
+                    .sorted(Comparator.comparingLong(UserDTO::getId))
                     .map(userDTO -> "<tr>" +
                             "<td>" + userDTO.getFirstName() + "</td>" +
                             "<td>" + userDTO.getLastName() + "</td>" +
