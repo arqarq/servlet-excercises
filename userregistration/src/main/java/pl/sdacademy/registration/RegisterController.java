@@ -3,6 +3,7 @@ package pl.sdacademy.registration;
 import pl.sdacademy.registration.DTO.AddressDTO;
 import pl.sdacademy.registration.DTO.UserDTO;
 import pl.sdacademy.registration.service.UserService;
+import pl.sdacademy.registration.util.UserRegisterValidator;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collection;
 
 @WebServlet(name = "RegisterController", value = "/newUser")
 public class RegisterController extends HttpServlet {
@@ -38,7 +40,12 @@ public class RegisterController extends HttpServlet {
         addressOfTheUserToRegister.setHouseNo(request.getParameter("houseNo"));
         userToRegister.setAddressDTO(addressOfTheUserToRegister);
 
-        userService.saveUser(userToRegister);
+        Collection<String> errorStrings = UserRegisterValidator.validateUser(userToRegister);
+        if (errorStrings.isEmpty()) {
+            userService.saveUser(userToRegister);
+        } else {
+            request.setAttribute("errorsFromValidation", errorStrings);
+        }
         request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
     }
 }
