@@ -20,7 +20,7 @@
         /*background-color: darkgray;*/
     }
 
-    tr:nth-child(even) {
+    tbody tr:nth-child(odd) {
         background-color: #dddddd;
     }
 
@@ -36,7 +36,7 @@
 <%@ include file="header.html" %>
 <table>
     <caption>Zarejestrowani użytkownicy</caption>
-    <tbody>
+    <thead>
     <tr>
         <th>imię</th>
         <th>nazwisko</th>
@@ -45,6 +45,8 @@
         <th>edytuj</th>
         <th>usuń</th>
     </tr>
+    </thead>
+    <tbody>
     <%
         Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
         if (usersDTO.isEmpty()) {
@@ -71,7 +73,7 @@
 <br>
 <table>
     <caption>Zarejestrowani użytkownicy (JSP Standard Tag Library)<br>(bez sortowania po numerze ID w DB)</caption>
-    <tbody>
+    <thead>
     <tr>
         <th>imię</th>
         <th>nazwisko</th>
@@ -82,6 +84,8 @@
         <th>edytuj</th>
         <th>usuń</th>
     </tr>
+    </thead>
+    <tbody>
     <c:choose>
         <c:when test="${empty usersDTO}">
             <c:out value="<tr><td class=\"act\" colspan=\"8\">brak użytkowników</td></tr>" escapeXml="false"/>
