@@ -104,6 +104,7 @@
     </tbody>
 </table>
 <br>
+<% request.getSession(false).removeAttribute("userTemp"); %>
 <a href="newUser">dodaj nowego użytkownika</a>
 </body>
 </html>

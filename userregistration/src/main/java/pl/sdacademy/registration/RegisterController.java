@@ -52,7 +52,7 @@ public class RegisterController extends HttpServlet {
             userService.saveUser(userToRegister);
         } else {
             request.setAttribute("errorsFromValidation", errorStrings);
-            request.getSession().setAttribute("userTemp", userToRegister);
+            request.getSession(false).setAttribute("userTemp", userToRegister);
         }
         request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
     }
