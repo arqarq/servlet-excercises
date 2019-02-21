@@ -8,6 +8,26 @@ public class User {
     private String firstName;
     private String lastName;
     private Address address;
+    private String login;
+    private String password;
+
+    @Column
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    @Column
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Id
     @GeneratedValue
