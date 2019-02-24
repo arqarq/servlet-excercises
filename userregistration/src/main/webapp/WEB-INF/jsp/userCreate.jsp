@@ -13,9 +13,10 @@
             }
         %>
     </title>
+    <%@ include file="../includes/top.html" %>
 </head>
 <body>
-<%@ include file="header.html" %>
+<%@ include file="../includes/header.html" %>
 <form method="post" action="
 <%
 if (userDTO.getId() != null) {

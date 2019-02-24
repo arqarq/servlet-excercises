@@ -21,7 +21,7 @@ public class UserProfileDeleteController extends HttpServlet {
         String id = request.getParameter("id");
         UserDTO userById = userService.getUserById(Long.parseLong(id));
         request.setAttribute("userById", userById);
-        request.getRequestDispatcher("WEB-INF/userDeleted.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/userDeleted.jsp").forward(request, response);
     }
 
 //    @Override

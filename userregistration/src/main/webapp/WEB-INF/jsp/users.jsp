@@ -8,32 +8,10 @@
 <html lang="pl">
 <head>
     <title>Użytkownicy</title>
+    <%@ include file="../includes/top.html" %>
 </head>
-<style>
-    table {
-        border-collapse: collapse;
-    }
-
-    td, th {
-        border: 1px solid #dddddd;
-        padding: 3px;
-        /*background-color: darkgray;*/
-    }
-
-    tbody tr:nth-child(odd) {
-        background-color: #dddddd;
-    }
-
-    span {
-        font-size: 75%;
-    }
-
-    td.act {
-        text-align: center;
-    }
-</style>
 <body>
-<%@ include file="header.html" %>
+<%@ include file="../includes/header.html" %>
 <table>
     <caption>Zarejestrowani użytkownicy</caption>
     <thead>
@@ -61,9 +39,9 @@
                             "<td>" + userDTO.getFirstName() + "</td>" +
                             "<td>" + userDTO.getLastName() + "</td>" +
                             "<td>" + userDTO.getAddressDTO() + "</td>" +
-                            "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
-                            "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
-                            "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span>(klik)</span></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
                             "</tr>")
                     .collect(Collectors.joining()));
         }
@@ -98,9 +76,9 @@
                     <td>${user.addressDTO.city}</td>
                     <td>${user.addressDTO.street}</td>
                     <td>${user.addressDTO.houseNo}</td>
-                    <td class="act"><a href="userProfile?id=${user.id}"><span>(klik)</span></a></td>
-                    <td class="act"><a href="userProfileEdit?id=${user.id}"><span>(klik)</span></a></td>
-                    <td class="act"><a href="userProfileDelete?id=${user.id}"><span>(klik)</span></a></td>
+                    <td class="act"><a href="userProfile?id=${user.id}"><span class="tab">(klik)</span></a></td>
+                    <td class="act"><a href="userProfileEdit?id=${user.id}"><span class="tab">(klik)</span></a></td>
+                    <td class="act"><a href="userProfileDelete?id=${user.id}"><span class="tab">(klik)</span></a></td>
                 </tr>
             </c:forEach>
         </c:otherwise>

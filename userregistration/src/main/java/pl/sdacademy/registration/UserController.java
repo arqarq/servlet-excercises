@@ -23,6 +23,6 @@ public class UserController extends HttpServlet {
         Collection<UserDTO> usersDTO = userService.getUsers();
 //        usersDTO.clear();
         request.setAttribute("usersDTO", usersDTO);
-        request.getRequestDispatcher("WEB-INF/users.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/users.jsp").forward(request, response);
     }
 }

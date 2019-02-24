@@ -28,7 +28,7 @@ public class RegisterController extends HttpServlet {
             emptyUserDTO = (UserDTO) request.getSession(false).getAttribute("userTemp");
         }
         request.setAttribute("userById", emptyUserDTO);
-        request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/userCreate.jsp").forward(request, response);
     }
 
     @Override
@@ -54,6 +54,6 @@ public class RegisterController extends HttpServlet {
             request.setAttribute("errorsFromValidation", errorStrings);
             request.getSession(false).setAttribute("userTemp", userToRegister);
         }
-        request.getRequestDispatcher("WEB-INF/userAdded.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/userAdded.jsp").forward(request, response);
     }
 }

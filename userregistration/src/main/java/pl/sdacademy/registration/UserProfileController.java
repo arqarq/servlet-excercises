@@ -21,6 +21,6 @@ public class UserProfileController extends HttpServlet {
         String id = request.getParameter("id");
         UserDTO userById = userService.getUserById(Long.parseLong(id));
         request.setAttribute("userById", userById);
-        request.getRequestDispatcher("WEB-INF/userProfile.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/userProfile.jsp").forward(request, response);
     }
 }

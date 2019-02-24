@@ -4,9 +4,10 @@
 <html lang="pl">
 <head>
     <title>Status</title>
+    <%@ include file="../includes/top.html" %>
 </head>
 <body>
-<%@ include file="header.html" %>
+<%@ include file="../includes/header.html" %>
 <% UserDTO userDTO = (UserDTO) request.getAttribute("userById"); %>
 <p>usunąć użytkownika: <%= userDTO.getFirstName() %> <%= userDTO.getLastName() %>?
 </p>

@@ -6,9 +6,10 @@
 <html lang="pl">
 <head>
     <title>Dane użytkownika</title>
+    <%@ include file="../includes/top.html" %>
 </head>
 <body>
-<%@ include file="header.html" %>
+<%@ include file="../includes/header.html" %>
 <% UserDTO userDTOById = (UserDTO) request.getAttribute("userById"); %>
 <br>
 <label for="first">imię: </label>

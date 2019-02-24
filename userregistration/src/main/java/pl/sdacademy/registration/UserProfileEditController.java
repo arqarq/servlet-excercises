@@ -25,7 +25,7 @@ public class UserProfileEditController extends HttpServlet {
         String id = request.getParameter("id");
         UserDTO userById = userService.getUserById(Long.parseLong(id));
         request.setAttribute("userById", userById);
-        request.getRequestDispatcher("WEB-INF/userCreate.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/userCreate.jsp").forward(request, response);
     }
 
     @Override
@@ -52,6 +52,6 @@ public class UserProfileEditController extends HttpServlet {
             request.setAttribute("errorsFromValidation", errorStrings);
             request.getSession(false).setAttribute("userTemp", userToUpdate);
         }
-        request.getRequestDispatcher("WEB-INF/userUpdated.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/jsp/userUpdated.jsp").forward(request, response);
     }
 }
