@@ -1,15 +1,15 @@
 package pl.sdacademy.registration.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "Users2")
 public class User2 {
     private Long id;
     private String login;
     private String password;
+    private String firstName;
+    private String lastName;
+    private Address address;
 
     @Id
     @GeneratedValue
@@ -37,5 +37,32 @@ public class User2 {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Column
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Column
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

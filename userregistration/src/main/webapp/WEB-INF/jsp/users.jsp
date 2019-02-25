@@ -4,7 +4,7 @@
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.stream.Collectors" %>
-<!DOCTYPE html>
+<% request.getSession(false).removeAttribute("userTemp"); %><% out.clear(); %><!DOCTYPE html>
 <html lang="pl">
 <head>
     <title>Użytkownicy</title>
@@ -24,29 +24,25 @@
         <th>usuń</th>
     </tr>
     </thead>
-    <tbody>
-    <%
-        Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
+    <tbody><% Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
         if (usersDTO.isEmpty()) {
-            out.write("<tr>" +
+            out.write(System.lineSeparator() + "    <tr>" +
                     "<td class=\"act\" colspan=\"6\">brak użytkowników</td>" +
-                    "</tr>");
+                    "</tr>" + System.lineSeparator());
         } else {
-            out.println(usersDTO.stream()
+            out.println(System.lineSeparator() + usersDTO.stream()
 //                    .sorted((userDTO1, userDTO2) -> Long.compare(userDTO1.getId(), userDTO2.getId()))
                     .sorted(Comparator.comparingLong(UserDTO::getId))
-                    .map(userDTO -> "<tr>" +
+                    .map(userDTO -> "    <tr>" +
                             "<td>" + userDTO.getFirstName() + "</td>" +
                             "<td>" + userDTO.getLastName() + "</td>" +
                             "<td>" + userDTO.getAddressDTO() + "</td>" +
                             "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
                             "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
                             "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
-                            "</tr>")
+                            "</tr>" + System.lineSeparator())
                     .collect(Collectors.joining()));
-        }
-    %>
-    </tbody>
+        } %></tbody>
 </table>
 <br>
 <table>
@@ -86,7 +82,6 @@
     </tbody>
 </table>
 <br>
-<% request.getSession(false).removeAttribute("userTemp"); %>
 <a href="newUser">dodaj nowego użytkownika</a>
 </body>
 </html>
