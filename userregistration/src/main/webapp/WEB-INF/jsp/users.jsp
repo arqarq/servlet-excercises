@@ -30,7 +30,7 @@
                     "<td class=\"act\" colspan=\"6\">brak użytkowników</td>" +
                     "</tr>" + System.lineSeparator());
         } else {
-            out.println(System.lineSeparator() + usersDTO.stream()
+            out.print(System.lineSeparator() + usersDTO.stream()
 //                    .sorted((userDTO1, userDTO2) -> Long.compare(userDTO1.getId(), userDTO2.getId()))
                     .sorted(Comparator.comparingLong(UserDTO::getId))
                     .map(userDTO -> "    <tr>" +
