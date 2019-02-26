@@ -4,7 +4,11 @@
 <%@ page import="java.util.Collection" %>
 <%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.stream.Collectors" %>
-<% request.getSession(false).removeAttribute("userTemp"); %><% out.clear(); %><!DOCTYPE html>
+<jsp:useBean id="usersDTO" scope="request" type="java.util.Collection<pl.sdacademy.registration.DTO.UserDTO>"/>
+<%
+    request.getSession(false).removeAttribute("userTemp");
+    out.clear();
+%><!DOCTYPE html>
 <html lang="pl">
 <head>
     <title>Użytkownicy</title>
@@ -24,7 +28,9 @@
         <th>usuń</th>
     </tr>
     </thead>
-    <tbody><% Collection<UserDTO> usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
+    <tbody><%
+        /*Collection<UserDTO>*/
+        usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
         if (usersDTO.isEmpty()) {
             out.write(System.lineSeparator() + "    <tr>" +
                     "<td class=\"act\" colspan=\"6\">brak użytkowników</td>" +
@@ -42,7 +48,8 @@
                             "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
                             "</tr>" + System.lineSeparator())
                     .collect(Collectors.joining()));
-        } %></tbody>
+        }
+    %></tbody>
 </table>
 <br>
 <table>
@@ -59,23 +66,26 @@
         <th>usuń</th>
     </tr>
     </thead>
-    <tbody><c:choose>
+    <tbody>
+    <c:choose>
         <c:when test="${empty usersDTO}">
             <c:out value="<tr><td class=\"act\" colspan=\"8\">brak użytkowników</td></tr>"
                    escapeXml="false"/></c:when>
-        <c:otherwise><c:forEach var="user" items="${usersDTO}">
-            <tr>
-                <td>${user.firstName}</td>
-                <td>${user.lastName}</td>
-                <td>${user.addressDTO.city}</td>
-                <td>${user.addressDTO.street}</td>
-                <td>${user.addressDTO.houseNo}</td>
-                <td class="act"><a href="userProfile?id=${user.id}"><span class="tab">(klik)</span></a></td>
-                <td class="act"><a href="userProfileEdit?id=${user.id}"><span class="tab">(klik)</span></a></td>
-                <td class="act"><a href="userProfileDelete?id=${user.id}"><span class="tab">(klik)</span></a></td>
-            </tr>
-        </c:forEach></c:otherwise>
-    </c:choose></tbody>
+        <c:otherwise>
+            <c:forEach var="user" items="${usersDTO}">
+                <tr>
+                    <td>${user.firstName}</td>
+                    <td>${user.lastName}</td>
+                    <td>${user.addressDTO.city}</td>
+                    <td>${user.addressDTO.street}</td>
+                    <td>${user.addressDTO.houseNo}</td>
+                    <td class="act"><a href="userProfile?id=${user.id}"><span class="tab">(klik)</span></a></td>
+                    <td class="act"><a href="userProfileEdit?id=${user.id}"><span class="tab">(klik)</span></a></td>
+                    <td class="act"><a href="userProfileDelete?id=${user.id}"><span class="tab">(klik)</span></a></td>
+                </tr>
+            </c:forEach></c:otherwise>
+    </c:choose>
+    </tbody>
 </table>
 <br>
 <a href="newUser">dodaj nowego użytkownika</a>
