@@ -48,7 +48,7 @@ public class RegisterController extends HttpServlet {
 
         Collection<String> errorStrings = UserRegisterValidator.validateUser(userToRegister);
         if (errorStrings.isEmpty()) {
-            request.getSession(false).removeAttribute("userTemp");
+            // request.getSession(false).removeAttribute("userTemp");
             userService.saveUser(userToRegister);
         } else {
             request.setAttribute("errorsFromValidation", errorStrings);

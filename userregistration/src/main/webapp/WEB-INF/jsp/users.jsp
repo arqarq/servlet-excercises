@@ -5,8 +5,9 @@
 <%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Collectors" %>
+<jsp:useBean id="usersDTO" scope="request" type="java.util.List<pl.sdacademy.registration.DTO.UserDTO>"/>
 <%
-    request.getSession(false).removeAttribute("userTemp");
+    // request.getSession(false).removeAttribute("userTemp");
     out.clear();
 %><!DOCTYPE html>
 <html lang="pl">
@@ -30,17 +31,15 @@
     </thead>
     <tbody><%
         Object obj = request.getAttribute("usersDTO");
-        List<UserDTO> usersDTO = new ArrayList<>();
-        List<?> usersTempDTO = new ArrayList<>();
+        usersDTO = new ArrayList<>();
+        List<?> usersTempDTO;
         if (obj instanceof ArrayList) {
             usersTempDTO = (ArrayList) obj;
-            // out.write(usersTempDTO.getClass().getName());
             if (!usersTempDTO.isEmpty()) {
                 if (usersTempDTO.get(0) instanceof UserDTO) {
                     for (Object user : usersTempDTO) {
                         usersDTO.add((UserDTO) user);
                     }
-                    // usersTempDTO.forEach(user -> usersDTO.add((UserDTO) user));
                 }
             }
         }
