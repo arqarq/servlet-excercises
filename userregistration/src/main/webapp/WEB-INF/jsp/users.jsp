@@ -1,10 +1,10 @@
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
-<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Comparator" %>
+<%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Collectors" %>
-<jsp:useBean id="usersDTO" scope="request" type="java.util.Collection<pl.sdacademy.registration.DTO.UserDTO>"/>
 <%
     request.getSession(false).removeAttribute("userTemp");
     out.clear();
@@ -29,8 +29,22 @@
     </tr>
     </thead>
     <tbody><%
-        /*Collection<UserDTO>*/
-        usersDTO = (Collection<UserDTO>) request.getAttribute("usersDTO");
+        Object obj = request.getAttribute("usersDTO");
+        List<UserDTO> usersDTO = new ArrayList<>();
+        List<?> usersTempDTO = new ArrayList<>();
+        if (obj instanceof ArrayList) {
+            usersTempDTO = (ArrayList) obj;
+            // out.write(usersTempDTO.getClass().getName());
+            if (!usersTempDTO.isEmpty()) {
+                if (usersTempDTO.get(0) instanceof UserDTO) {
+                    for (Object user : usersTempDTO) {
+                        usersDTO.add((UserDTO) user);
+                    }
+                    // usersTempDTO.forEach(user -> usersDTO.add((UserDTO) user));
+                }
+            }
+        }
+
         if (usersDTO.isEmpty()) {
             out.write(System.lineSeparator() + "    <tr>" +
                     "<td class=\"act\" colspan=\"6\">brak użytkowników</td>" +
