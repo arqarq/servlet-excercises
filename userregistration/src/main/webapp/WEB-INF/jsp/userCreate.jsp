@@ -54,7 +54,14 @@ if (userDTO.getId() != null) {
     <input type="submit"
            value="<%= userDTO.getId() != null ? "Zaktualizuj dane użytkownika" : "Zarejestruj użytkownika" %>">
     <p></p>
-    <a href="users">pokaż użytkowników</a>
+    <table>
+        <tbody>
+        <tr>
+            <td><a href="users">pokaż użytkowników</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </form>
 </body>
 </html>

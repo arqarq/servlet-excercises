@@ -24,6 +24,13 @@
         </c:otherwise>
     </c:choose>
 </p>
-<a href="users">pokaż użytkowników</a>
+<table>
+    <tbody>
+    <tr>
+        <td><a href="users">pokaż użytkowników</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

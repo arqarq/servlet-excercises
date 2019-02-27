@@ -13,6 +13,9 @@
     <c:choose>
         <c:when test="${empty errorsFromValidation}">
             użytkownik zaktualizowany: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
+            <%
+                request.getSession(false).removeAttribute("userTemp");
+            %>
         </c:when>
         <c:otherwise>
             <c:forEach var="string" items="${errorsFromValidation}">
@@ -22,6 +25,13 @@
         </c:otherwise>
     </c:choose>
 </p>
-<a href="users">pokaż użytkowników</a>
+<table>
+    <tbody>
+    <tr>
+        <td><a href="users">pokaż użytkowników</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

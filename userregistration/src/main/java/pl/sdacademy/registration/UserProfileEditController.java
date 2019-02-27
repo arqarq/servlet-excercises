@@ -46,7 +46,7 @@ public class UserProfileEditController extends HttpServlet {
 
         Collection<String> errorStrings = UserRegisterValidator.validateUser(userToUpdate);
         if (errorStrings.isEmpty()) {
-            request.getSession(false).removeAttribute("userTemp");
+            // request.getSession(false).removeAttribute("userTemp");
             userService.updateUser(userToUpdate);
         } else {
             request.setAttribute("errorsFromValidation", errorStrings);
