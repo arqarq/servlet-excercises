@@ -5,7 +5,6 @@
 <%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Collectors" %>
-<%@ page import="pl.sdacademy.registration.model.User" %>
 <jsp:useBean id="usersDTO" scope="request" type="java.util.List<pl.sdacademy.registration.DTO.UserDTO>"/>
 <%
     // request.getSession(false).removeAttribute("userTemp");
