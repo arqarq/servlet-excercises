@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
 import java.util.Collection;
+import java.util.Vector;
 
 @Singleton
 public class UserDAO {
@@ -32,7 +33,17 @@ public class UserDAO {
 
     public Collection<User> getUsers() {
         Query query = entityManager.createQuery("SELECT u FROM Users u");
-        return query.getResultList();
+        Object obj = query.getResultList();
+
+        Collection<User> resultList = new Vector<>();
+        Collection<?> tempList;
+        if (obj != null) {
+            tempList = (Vector) obj;
+            for (Object user : tempList) {
+                resultList.add((User) user);
+            }
+        }
+        return resultList;
     }
 
     public User findById(Long userId) {

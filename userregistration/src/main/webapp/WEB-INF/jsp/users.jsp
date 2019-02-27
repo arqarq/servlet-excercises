@@ -5,6 +5,7 @@
 <%@ page import="java.util.Comparator" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.stream.Collectors" %>
+<%@ page import="pl.sdacademy.registration.model.User" %>
 <jsp:useBean id="usersDTO" scope="request" type="java.util.List<pl.sdacademy.registration.DTO.UserDTO>"/>
 <%
     // request.getSession(false).removeAttribute("userTemp");
@@ -36,11 +37,11 @@
         if (obj instanceof ArrayList) {
             usersTempDTO = (ArrayList) obj;
             if (!usersTempDTO.isEmpty()) {
-                if (usersTempDTO.get(0) instanceof UserDTO) {
-                    for (Object user : usersTempDTO) {
-                        usersDTO.add((UserDTO) user);
-                    }
+                // if (usersTempDTO.get(0) instanceof UserDTO) {
+                for (Object user : usersTempDTO) {
+                    usersDTO.add((UserDTO) user);
                 }
+                // }
             }
         }
 
@@ -110,6 +111,13 @@
     </tbody>
 </table>
 <br>
-<a href="newUser">dodaj nowego użytkownika</a>
+<table>
+    <tbody>
+    <tr>
+        <td><a href="newUser">dodaj nowego użytkownika</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
