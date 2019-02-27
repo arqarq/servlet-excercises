@@ -1,6 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=utf-8" language="java" %>
-<!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    out.clear();
+%><!DOCTYPE html>
 <html lang="pl">
 <head>
     <title>Status</title>
@@ -12,7 +14,7 @@
 <p>
     <c:choose>
         <c:when test="${empty errorsFromValidation}">
-            użytkownik zaktualizowany: <%= request.getParameter("firstName")%> <%= request.getParameter("lastName") %>
+            użytkownik zaktualizowany: <%= request.getParameter("firstName") %> <%= request.getParameter("lastName") %>
             <%
                 request.getSession(false).removeAttribute("userTemp");
             %>
