@@ -56,9 +56,12 @@
                             "<td>" + userDTO.getFirstName() + "</td>" +
                             "<td>" + userDTO.getLastName() + "</td>" +
                             "<td>" + userDTO.getAddressDTO() + "</td>" +
-                            "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
-                            "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
-                            "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() + "\"><span class=\"tab\">(klik)</span></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfile?id=" + userDTO.getId() +
+                            "\"><div class=\"tab\">(klik)</div></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfileEdit?id=" + userDTO.getId() +
+                            "\"><div class=\"tab\">(klik)</div></a></td>" +
+                            "<td class=\"act\"><a href=\"userProfileDelete?id=" + userDTO.getId() +
+                            "\"><div class=\"tab\">(klik)</div></a></td>" +
                             "</tr>" + System.lineSeparator())
                     .collect(Collectors.joining()));
         }
@@ -92,9 +95,15 @@
                     <td>${user.addressDTO.city}</td>
                     <td>${user.addressDTO.street}</td>
                     <td>${user.addressDTO.houseNo}</td>
-                    <td class="act"><a href="userProfile?id=${user.id}"><span class="tab">(klik)</span></a></td>
-                    <td class="act"><a href="userProfileEdit?id=${user.id}"><span class="tab">(klik)</span></a></td>
-                    <td class="act"><a href="userProfileDelete?id=${user.id}"><span class="tab">(klik)</span></a></td>
+                    <td class="act"><a href="userProfile?id=${user.id}">
+                        <div class="tab">(klik)</div>
+                    </a></td>
+                    <td class="act"><a href="userProfileEdit?id=${user.id}">
+                        <div class="tab">(klik)</div>
+                    </a></td>
+                    <td class="act"><a href="userProfileDelete?id=${user.id}">
+                        <div class="tab">(klik)</div>
+                    </a></td>
                 </tr>
             </c:forEach></c:otherwise>
     </c:choose>

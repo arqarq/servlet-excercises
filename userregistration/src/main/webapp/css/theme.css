@@ -5,17 +5,17 @@ table {
 td, th {
     border: 1px solid #dddddd;
     padding: 3px;
-    /*background-color: darkgray;*/
 }
 
 tbody tr:nth-child(odd) {
     background-color: #dddddd;
 }
 
-span.tab {
+div.tab {
     font-size: 75%;
 }
 
 td.act {
     text-align: center;
+    vertical-align: middle;
 }
