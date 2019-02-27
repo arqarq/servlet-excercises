@@ -34,6 +34,13 @@
 <label for="addressDTO">adres/toString():</label>
 <span id="addressDTO"><jsp:getProperty name="userById" property="addressDTO"/></span>
 <br><br>
-<a href="users">wróć</a>
+<table>
+    <tbody>
+    <tr>
+        <td><a href="users">wróć</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
