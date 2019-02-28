@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" trimDirectiveWhitespaces="true" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <%@ page import="java.util.ArrayList" %>
@@ -8,7 +8,6 @@
 <jsp:useBean id="usersDTO" scope="request" type="java.util.List<pl.sdacademy.registration.DTO.UserDTO>"/>
 <%
     // request.getSession(false).removeAttribute("userTemp");
-    out.clear();
 %><!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -45,14 +44,14 @@
         }
 
         if (usersDTO.isEmpty()) {
-            out.write(System.lineSeparator() + "    <tr>" +
+            out.write(System.lineSeparator() + "<tr>" +
                     "<td class=\"act\" colspan=\"6\">brak użytkowników</td>" +
                     "</tr>" + System.lineSeparator());
         } else {
             out.print(System.lineSeparator() + usersDTO.stream()
 //                    .sorted((userDTO1, userDTO2) -> Long.compare(userDTO1.getId(), userDTO2.getId()))
                     .sorted(Comparator.comparingLong(UserDTO::getId))
-                    .map(userDTO -> "    <tr>" +
+                    .map(userDTO -> "<tr>" +
                             "<td>" + userDTO.getFirstName() + "</td>" +
                             "<td>" + userDTO.getLastName() + "</td>" +
                             "<td>" + userDTO.getAddressDTO() + "</td>" +

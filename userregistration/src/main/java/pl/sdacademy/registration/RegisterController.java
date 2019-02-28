@@ -47,11 +47,11 @@ public class RegisterController extends HttpServlet {
         userToRegister.setAddressDTO(addressOfTheUserToRegister);
 
         Collection<String> errorStrings = UserRegisterValidator.validateUser(userToRegister);
+        request.setAttribute("errorsFromValidation", errorStrings);
         if (errorStrings.isEmpty()) {
             // request.getSession(false).removeAttribute("userTemp");
             userService.saveUser(userToRegister);
         } else {
-            request.setAttribute("errorsFromValidation", errorStrings);
             request.getSession(false).setAttribute("userTemp", userToRegister);
         }
         request.getRequestDispatcher("WEB-INF/jsp/userAdded.jsp").forward(request, response);

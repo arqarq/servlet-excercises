@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" trimDirectiveWhitespaces="true" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
 <!DOCTYPE html>
 <html lang="pl">

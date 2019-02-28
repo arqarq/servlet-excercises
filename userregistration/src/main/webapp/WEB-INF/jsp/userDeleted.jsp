@@ -1,5 +1,5 @@
+<%@ page contentType="text/html;charset=utf-8" trimDirectiveWhitespaces="true" language="java" %>
 <%@ page import="pl.sdacademy.registration.DTO.UserDTO" %>
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,7 +9,7 @@
 <body>
 <%@ include file="../includes/header.html" %>
 <% UserDTO userDTO = (UserDTO) request.getAttribute("userById"); %>
-<p>usunąć użytkownika: <%= userDTO.getFirstName() %> <%= userDTO.getLastName() %>?
+<p>usunąć użytkownika: <%= userDTO.getFirstName() %><%= " " + userDTO.getLastName() %>?
 </p>
 <table>
     <tbody>

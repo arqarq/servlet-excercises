@@ -1,8 +1,10 @@
-<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" trimDirectiveWhitespaces="true" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-    out.clear();
-%><!DOCTYPE html>
+<jsp:useBean id="errorsFromValidation"
+             scope="request"
+             type="java.util.Collection<java.lang.String>">
+</jsp:useBean>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <title>Status</title>
@@ -13,7 +15,7 @@
 <p>
     <c:choose>
         <c:when test="${empty errorsFromValidation}">
-            użytkownik dodany: <%= request.getParameter("firstName") %> <%= request.getParameter("lastName") %>
+            użytkownik dodany: <%= request.getParameter("firstName") %><%= " " + request.getParameter("lastName") %>
             <%
                 request.getSession(false).removeAttribute("userTemp");
             %>

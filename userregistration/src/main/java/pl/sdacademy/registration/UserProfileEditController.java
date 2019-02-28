@@ -45,11 +45,11 @@ public class UserProfileEditController extends HttpServlet {
         userToUpdate.setAddressDTO(addressOfTheUserToUpdate);
 
         Collection<String> errorStrings = UserRegisterValidator.validateUser(userToUpdate);
+        request.setAttribute("errorsFromValidation", errorStrings);
         if (errorStrings.isEmpty()) {
             // request.getSession(false).removeAttribute("userTemp");
             userService.updateUser(userToUpdate);
         } else {
-            request.setAttribute("errorsFromValidation", errorStrings);
             request.getSession(false).setAttribute("userTemp", userToUpdate);
         }
         request.getRequestDispatcher("WEB-INF/jsp/userUpdated.jsp").forward(request, response);
