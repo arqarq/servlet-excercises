@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@ include file="../includes/header.html" %>
-<form method="post" action="
+<form id="1" method="post" action="
 <%
 if (userDTO.getId() != null) {
     out.write("userProfileEdit");
@@ -51,17 +51,11 @@ if (userDTO.getId() != null) {
     <input type="text" id="houseNo" name="houseNo"
            value="<%= userDTO.getAddressDTO().getHouseNo() != null ? userDTO.getAddressDTO().getHouseNo() : "" %>">
     <br>
-    <input type="submit"
-           value="<%= userDTO.getId() != null ? "Zaktualizuj dane użytkownika" : "Zarejestruj użytkownika" %>">
-    <p></p>
-    <table>
-        <tbody>
-        <tr>
-            <td><a href="users">pokaż użytkowników</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
 </form>
+<form style="display: inline" id="2" method="get" action="users">
+    <input form="2" type="submit" value="Anuluj"/>
+</form>
+<input form="1" type="submit"
+       value="<%= userDTO.getId() != null ? "Zaktualizuj dane użytkownika" : "Zarejestruj użytkownika" %>">
 </body>
 </html>
